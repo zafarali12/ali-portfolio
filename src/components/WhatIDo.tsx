@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./styles/WhatIDo.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { zafarData } from "../data/zafarData";
 
 const WhatIDo = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -35,7 +36,7 @@ const WhatIDo = () => {
         </h2>
       </div>
       <div className="what-box">
-        <div className="what-box-in">
+        <div className="what-box-in" style={{ display: "flex", height: "600px" }}>
           <div className="what-border2">
             <svg width="100%">
               <line
@@ -58,6 +59,7 @@ const WhatIDo = () => {
               />
             </svg>
           </div>
+          {/* Frontend */}
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 0)}
@@ -90,23 +92,18 @@ const WhatIDo = () => {
               <h3>FRONTEND</h3>
               <h4>Building Interactive UIs</h4>
               <p>
-                Crafting performant, responsive interfaces with modern frameworks.
-                From SPAs to micro-frontends, I deliver pixel-perfect experiences.
+                Crafting performant, responsive interfaces with modern frameworks like React and Next.js.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">React.js</div>
-                <div className="what-tags">Angular</div>
-                <div className="what-tags">Next.js</div>
-                <div className="what-tags">TypeScript</div>
-                <div className="what-tags">JavaScript</div>
-                <div className="what-tags">Material UI</div>
-                <div className="what-tags">HTML5</div>
-                <div className="what-tags">CSS3</div>
+                {zafarData.skills.frontend.map((skill) => (
+                  <div className="what-tags" key={skill}>{skill}</div>
+                ))}
               </div>
               <div className="what-arrow"></div>
             </div>
           </div>
+          {/* Backend */}
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 1)}
@@ -129,19 +126,47 @@ const WhatIDo = () => {
               <h3>BACKEND</h3>
               <h4>Scalable Server Architecture</h4>
               <p>
-                Designing robust APIs and microservices. From CMS platforms to
-                complex business logic, I build backends that scale.
+                Designing robust APIs and microservices. Expert in Node.js, Express, and Database management.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">NestJS</div>
-                <div className="what-tags">Express.js</div>
-                <div className="what-tags">MongoDB</div>
-                <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">REST APIs</div>
-                <div className="what-tags">Microservices</div>
-                <div className="what-tags">Python</div>
+                {zafarData.skills.backend.concat(zafarData.skills.databases).map((skill) => (
+                  <div className="what-tags" key={skill}>{skill}</div>
+                ))}
+              </div>
+              <div className="what-arrow"></div>
+            </div>
+          </div>
+          {/* AI/ML & DevOps */}
+          <div
+            className="what-content what-noTouch"
+            ref={(el) => setRef(el, 2)}
+          >
+            <div className="what-border1">
+              <svg height="100%">
+                <line
+                  x1="0"
+                  y1="100%"
+                  x2="100%"
+                  y2="100%"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeDasharray="6,6"
+                />
+              </svg>
+            </div>
+            <div className="what-corner"></div>
+            <div className="what-content-in">
+              <h3>AI & DEVOPS</h3>
+              <h4>Intelligence & Deployment</h4>
+              <p>
+                Integrating AI models and setting up CI/CD pipelines for production-ready apps.
+              </p>
+              <h5>Skillset & tools</h5>
+              <div className="what-content-flex">
+                {zafarData.skills.aiMl.concat(zafarData.skills.devops).map((skill) => (
+                  <div className="what-tags" key={skill}>{skill}</div>
+                ))}
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -168,3 +193,4 @@ function handleClick(container: HTMLDivElement) {
     });
   }
 }
+

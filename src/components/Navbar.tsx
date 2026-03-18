@@ -4,6 +4,7 @@ import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
 import "./styles/Navbar.css";
+import { zafarData } from "../data/zafarData";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
@@ -43,16 +44,17 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          RC
+          MZA
         </a>
         <a
-          href="mailto:rajeshchittyal21@gmail.com"
+          href={`mailto:${zafarData.contact.email}`}
           className="navbar-connect"
           data-cursor="disable"
         >
-          rajeshchittyal21@gmail.com
+          {zafarData.contact.email}
         </a>
         <ul>
+
           <li>
             <a data-href="#about" href="#about">
               <HoverLinks text="ABOUT" />

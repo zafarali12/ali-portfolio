@@ -1,7 +1,13 @@
 import { PropsWithChildren } from "react";
 import "./styles/Landing.css";
+import { zafarData } from "../data/zafarData";
 
 const Landing = ({ children }: PropsWithChildren) => {
+  const nameParts = zafarData.name.split(" ");
+  const firstName = nameParts[0];
+  const secondName = nameParts[1];
+  const lastName = nameParts.slice(2).join(" ");
+
   return (
     <>
       <div className="landing-section" id="landingDiv">
@@ -9,19 +15,19 @@ const Landing = ({ children }: PropsWithChildren) => {
           <div className="landing-intro">
             <h2>Hello! I'm</h2>
             <h1>
-              RAJESH
+              {firstName} {secondName}
               <br />
-              <span>CHITYAL</span>
+              <span>{lastName}</span>
             </h1>
           </div>
           <div className="landing-info">
-            <h3>A Full Stack</h3>
+            <h3>{zafarData.title1}</h3>
             <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Developer</div>
-              <div className="landing-h2-2">Engineer</div>
+              <div className="landing-h2-1">{zafarData.title2}</div>
+              <div className="landing-h2-2">Software</div>
             </h2>
             <h2>
-              <div className="landing-h2-info">Engineer</div>
+              <div className="landing-h2-info">Full-Stack</div>
               <div className="landing-h2-info-1">Developer</div>
             </h2>
           </div>
@@ -33,3 +39,4 @@ const Landing = ({ children }: PropsWithChildren) => {
 };
 
 export default Landing;
+
